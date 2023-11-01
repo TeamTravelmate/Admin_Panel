@@ -1,6 +1,52 @@
+import 'dart:convert';
+import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:http/http.dart';
 import 'package:travel_mate_admin/constants.dart';
 import 'package:travel_mate_admin/panel_center/linear_graph.dart';
+import '../Data/env.dart';
+
+class UserController extends GetxController {
+  var users = List<Person>.empty(growable: true).obs;
+
+  @override
+  void onInit() {
+    fetchUsers();
+    super.onInit();
+  }
+
+Future<void> fetchUsers() async {
+  var response = await get(Uri.parse('$backendUrl/admin/viewUsers'));
+
+  if (response.statusCode == 200) {
+    var decodedResponse = jsonDecode(response.body);
+
+    if (decodedResponse['users'] != null) {
+      var random = Random();
+      var userList = List<Person>.generate(
+        decodedResponse['users'].length ~/ 4,
+        (index) => Person(
+          name: decodedResponse['users'][index * 4 + 1].toString(),
+          color: Color.fromRGBO(
+            random.nextInt(250),
+            random.nextInt(246),
+            random.nextInt(226),
+            1,
+          ),
+        ),
+      );
+
+      users.assignAll(userList);
+    } else {
+      throw Exception('No users found in the response');
+    }
+  } else {
+    throw Exception('Failed to load users');
+  }
+}
+
+}
 
 class Person {
   String name;
@@ -11,22 +57,13 @@ class Person {
 class PanelCenterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    List<Person> _persons = [
-      Person(name: "Theia Bowen", color: Color(0xfff8b250)),
-      Person(name: "Fariha Odling", color: Color(0xffff5182)),
-      Person(name: "Viola Willis", color: Color(0xff0293ee)),
-      Person(name: "Emmett Forrest", color: Color(0xfff8b250)),
-      Person(name: "Nick Jarvis", color: Color(0xff13d38e)),
-      Person(name: "ThAmit Clayeia", color: Color(0xfff8b250)),
-      Person(name: "ThAmalie Howardeia", color: Color(0xffff5182)),
-      Person(name: "Campbell Britton", color: Color(0xff0293ee)),
-      Person(name: "Haley Mellor", color: Color(0xffff5182)),
-      Person(name: "Harlen Higgins", color: Color(0xff13d38e)),
-    ];
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          Padding(
+    return GetBuilder<UserController>(
+        init: UserController(),
+        builder: (controller) {
+          return SingleChildScrollView(
+            child: Column(
+              children: [
+                          Padding(
             padding: const EdgeInsets.only(
                 top: Constants.kPadding / 2,
                 right: Constants.kPadding / 2,
@@ -39,7 +76,7 @@ class PanelCenterPage extends StatelessWidget {
               ),
               child: Container(
                 width: double.infinity,
-                child: ListTile(
+                child: const ListTile(
                   //leading: Icon(Icons.sell),
                   title: Text(
                     "Net Revenue from Trips",
@@ -60,46 +97,47 @@ class PanelCenterPage extends StatelessWidget {
             ),
           ),
           const PieChartSample2(),
-          Padding(
-            padding: const EdgeInsets.only(
-                top: Constants.kPadding,
-                left: Constants.kPadding / 2,
-                right: Constants.kPadding / 2,
-                bottom: Constants.kPadding),
-            child: Card(
-              color: Constants.purpleLight,
-              elevation: 3,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20)),
-              child: Column(
-                children: List.generate(
-                  _persons.length,
-                  (index) => ListTile(
-                    leading: CircleAvatar(
-                      radius: 15,
-                      child: Text(
-                        _persons[index].name.substring(0, 1),
-                        style: TextStyle(color: Colors.white),
+                Padding(
+                  padding: const EdgeInsets.only(
+                      top: Constants.kPadding,
+                      left: Constants.kPadding / 2,
+                      right: Constants.kPadding / 2,
+                      bottom: Constants.kPadding),
+                  child: Card(
+                    color: Constants.purpleLight,
+                    elevation: 3,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20)),
+                    child: Column(
+                      children: List.generate(
+                        controller.users.length,
+                        (index) => ListTile(
+                          leading: CircleAvatar(
+                            radius: 15,
+                            backgroundColor: controller.users[index].color,
+                            child: Text(
+                              controller.users[index].name.substring(0, 1),
+                              style: const TextStyle(color: Colors.white),
+                            ),
+                          ),
+                          title: Text(
+                            controller.users[index].name,
+                            style: const TextStyle(color: Colors.white),
+                          ),
+                          trailing: IconButton(
+                              onPressed: () {},
+                              icon: const Icon(
+                                Icons.message,
+                                color: Colors.white,
+                              )),
+                        ),
                       ),
-                      backgroundColor: _persons[index].color,
                     ),
-                    title: Text(
-                      _persons[index].name,
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    trailing: IconButton(
-                        onPressed: () {},
-                        icon: Icon(
-                          Icons.message,
-                          color: Colors.white,
-                        )),
                   ),
                 ),
-              ),
+              ],
             ),
-          ),
-        ],
-      ),
-    );
+          );
+        });
   }
 }
