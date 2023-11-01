@@ -59,7 +59,7 @@ class _PanelRightPageState extends State<PanelRightPage> {
                     trailing: Chip(
                       label: Text(
                         "46,450",
-                        style: TextStyle(color: Colors.white),
+                        style: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
                       ),
                     ),
                   ),

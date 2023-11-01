@@ -18,8 +18,8 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
-        scaffoldBackgroundColor: Constants.purpleDark,
-        canvasColor: Constants.purpleLight,
+        scaffoldBackgroundColor: Colors.white,
+        canvasColor: const Color.fromARGB(255, 255, 255, 255),
         useMaterial3: true,
       ),
       // home: PlacesPage(),

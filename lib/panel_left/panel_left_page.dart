@@ -75,7 +75,7 @@ class _PanelLeftPageState extends State<PanelLeftPage> {
                         trailing: Chip(
                           label: Text(
                             "50",
-                            style: TextStyle(color: Colors.white),
+                            style: TextStyle(color: Color.fromARGB(255, 6, 6, 6)),
                           ),
                         ),
                       ),

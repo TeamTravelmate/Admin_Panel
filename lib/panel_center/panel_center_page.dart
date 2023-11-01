@@ -52,7 +52,7 @@ class PanelCenterPage extends StatelessWidget {
                   trailing: Chip(
                     label: Text(
                       "20,500",
-                      style: TextStyle(color: Colors.white),
+                      style: TextStyle(color: Color.fromARGB(255, 11, 11, 11)),
                     ),
                   ),
                 ),

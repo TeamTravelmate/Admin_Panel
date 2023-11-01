@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:travel_mate_admin/ad_mate.dart';
+import 'package:travel_mate_admin/complaints.dart';
 import 'package:travel_mate_admin/notifications.dart';
 import 'package:travel_mate_admin/places_page.dart';
 import 'package:travel_mate_admin/featured_places_page.dart';
-import 'package:travel_mate_admin/blogs_page.dart';
+import 'package:travel_mate_admin/userManagement.dart';
 import 'package:travel_mate_admin/responsive_layout.dart';
 import 'package:travel_mate_admin/settings.dart';
-import 'package:travel_mate_admin/upload_blogs.dart';
+import 'package:travel_mate_admin/profile_upgrading.dart';
 import 'package:travel_mate_admin/upload_places.dart';
 import 'package:travel_mate_admin/widget_tree.dart';
+import 'package:travel_mate_admin/login.dart';
 
 import 'constants.dart';
 
@@ -29,27 +30,31 @@ class _DrawerPageState extends State<DrawerPage> {
 
   List<ButtonsInfo> _buttonNames = [
     ButtonsInfo(title: "Dashboard", icon: Icons.pie_chart),
-    ButtonsInfo(title: "Places", icon: Icons.place),
-    ButtonsInfo(title: "Featured Places", icon: Icons.featured_play_list),
-    ButtonsInfo(title: "Upload Place", icon: Icons.upload),
-    ButtonsInfo(title: "Blogs", icon: Icons.rocket_launch),
-    ButtonsInfo(title: "Upload Blogs", icon: Icons.upload),
-    ButtonsInfo(title: "Ad Mate", icon: Icons.ad_units),
-    ButtonsInfo(title: "Notifications", icon: Icons.notifications),
-    ButtonsInfo(title: "Settings", icon: Icons.settings),
+    // ButtonsInfo(title: "Places", icon: Icons.place),
+    // ButtonsInfo(title: "Featured Places", icon: Icons.featured_play_list),
+    // ButtonsInfo(title: "Upload Place", icon: Icons.upload),
+    ButtonsInfo(title: "Users", icon: Icons.rocket_launch),
+    ButtonsInfo(title: "Upgrade Profile", icon: Icons.upload),
+    ButtonsInfo(title: "Complaints", icon: Icons.ad_units),
+    // ButtonsInfo(title: "Notifications", icon: Icons.notifications),
+    // ButtonsInfo(title: "Settings", icon: Icons.settings),
+  
+        ButtonsInfo(title: "Logout", icon: Icons.logout),
+
   ];
 
   List<Widget> _pages = [
     // DashboardPage(),
     WidgetTree(),
-    PlacesPage(),
-    FeaturedPlacesPage(),
-    UploadPlacePage(),
-    BlogsPage(),
-    UploadBlogsPage(),
-    AdMatePage(),
-    NotificationsPage(),
-    SettingsPage(),
+    // PlacesPage(),
+    // FeaturedPlacesPage(),
+    // UploadPlacePage(),
+    UsersPage(),
+    ProfileUpgradeRequests(),
+    ComplaintsPage(),
+    // NotificationsPage(),
+    // SettingsPage(),
+    LoginPage(),
   ];
 
   @override
