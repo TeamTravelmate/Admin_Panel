@@ -87,15 +87,6 @@ class ComplaintsTab extends StatelessWidget {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Container(
-                      width: 150,
-                      height: 100,
-                      padding: EdgeInsets.all(20),
-                      child: Image.network(
-                        'url_to_image',
-                        fit: BoxFit.cover,
-                      ),
-                    ),
                     Expanded(
                       child: Padding(
                         padding: EdgeInsets.all(16),
@@ -110,7 +101,7 @@ class ComplaintsTab extends StatelessWidget {
                             ),
                             SizedBox(height: 20),
                             Text(
-                              'Report: Inappropriate content > misleading',
+                              'Report: Inappropriate behavior',
                               style: TextStyle(color: Colors.red),
                             ),
                           ],

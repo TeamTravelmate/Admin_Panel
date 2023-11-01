@@ -111,15 +111,6 @@ class SubTabContent extends StatelessWidget {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Container(
-                      width: 150,
-                      height: 100,
-                      padding: EdgeInsets.all(8),
-                      child: Image.network(
-                        'url_to_image',
-                        fit: BoxFit.cover,
-                      ),
-                    ),
                     Expanded(
                       child: Padding(
                         padding: EdgeInsets.all(16),

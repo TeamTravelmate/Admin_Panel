@@ -31,7 +31,7 @@ class ComplaintsPage extends StatelessWidget {
                   Tab(text: 'Comments'),
                   Tab(text: 'Users'),
                   Tab(text: 'Trip Organizers'),
-                  Tab(text: 'Service Providers'),
+                  Tab(text: 'System'),
                   // Tab(text: 'More'),
                 ],
               ),

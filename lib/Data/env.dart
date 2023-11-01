@@ -1,1 +1,1 @@
-String backendUrl = 'http://192.168.196.30:3000';
+String backendUrl = 'https://us-central1-aiot-fit-xlab.cloudfunctions.net';
