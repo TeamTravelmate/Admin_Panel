@@ -13,7 +13,7 @@ class _UsersPageState extends State<UsersPage> {
   String selectedSortOption = 'Select Sort';
   String selectedFilterOption = 'Select Filter';
 
-  final whiteTextStyle = TextStyle(color: Color.fromARGB(255, 0, 0, 0));
+  final whiteTextStyle = const TextStyle(color: Color.fromARGB(255, 0, 0, 0));
 
   Future<List<Map>> fetchUsers() async {
     final response = await http.get(Uri.parse('$backendUrl/admin/viewUsers'));
@@ -45,17 +45,17 @@ class _UsersPageState extends State<UsersPage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("Confirmation"),
-          content: Text("Are you sure you want to delete this account?"),
+          title: const Text("Confirmation"),
+          content: const Text("Are you sure you want to delete this account?"),
           actions: <Widget>[
             TextButton(
-              child: Text("No"),
+              child: const Text("No"),
               onPressed: () {
                 Navigator.of(context).pop();
               },
             ),
             TextButton(
-              child: Text("Yes"),
+              child: const Text("Yes"),
               onPressed: () {
                 // Handle the "Delete" action here
                 Navigator.of(context).pop();
@@ -73,17 +73,17 @@ class _UsersPageState extends State<UsersPage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("Confirmation"),
-          content: Text("Are you sure you want to disable this account?"),
+          title: const Text("Confirmation"),
+          content: const Text("Are you sure you want to disable this account?"),
           actions: <Widget>[
             TextButton(
-              child: Text("No"),
+              child: const Text("No"),
               onPressed: () {
                 Navigator.of(context).pop();
               },
             ),
             TextButton(
-              child: Text("Yes"),
+              child: const Text("Yes"),
               onPressed: () {
                 // Handle the "Disable" action here
                 Navigator.of(context).pop();
@@ -99,7 +99,7 @@ class _UsersPageState extends State<UsersPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Users Management'),
+        title: const Text('Users Management'),
         centerTitle: true,
       ),
       drawer: DrawerPage(),
@@ -108,11 +108,11 @@ class _UsersPageState extends State<UsersPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 50),
+            const SizedBox(height: 50),
             Row(
               children: [
                 Text('Sort By:', style: whiteTextStyle),
-                SizedBox(width: 10),
+                const SizedBox(width: 10),
                 Container(
                   decoration: BoxDecoration(
                     border: Border.all(color: Colors.grey),
@@ -142,9 +142,9 @@ class _UsersPageState extends State<UsersPage> {
                     },
                   ),
                 ),
-                SizedBox(width: 20),
+                const SizedBox(width: 20),
                 Text('Filter By:', style: whiteTextStyle),
-                SizedBox(width: 10),
+                const SizedBox(width: 10),
                 Container(
                   decoration: BoxDecoration(
                     border: Border.all(color: Colors.grey),
@@ -176,7 +176,7 @@ class _UsersPageState extends State<UsersPage> {
                 ),
               ],
             ),
-            SizedBox(height: 50),
+            const SizedBox(height: 50),
             FutureBuilder<List<Map>>(
               future: fetchUsers(),
               builder:
@@ -224,19 +224,19 @@ class _UsersPageState extends State<UsersPage> {
                                               BorderRadius.circular(15.0),
                                         )),
                                         fixedSize: MaterialStateProperty.all(
-                                            Size(100, 20)),
+                                            const Size(100, 20)),
                                       ),
                                       onPressed: () {
                                         // View button action
                                       },
-                                      icon: Icon(Icons.visibility,
+                                      icon: const Icon(Icons.visibility,
                                           color: Colors.white),
-                                      label: Text(
+                                      label: const Text(
                                         'View',
                                         style: TextStyle(color: Colors.white, fontSize: 11),
                                       ),
                                     ),
-                                    SizedBox(width: 10),
+                                    const SizedBox(width: 10),
                                     ElevatedButton.icon(
                                       style: ButtonStyle(
                                         backgroundColor:
@@ -248,20 +248,20 @@ class _UsersPageState extends State<UsersPage> {
                                               BorderRadius.circular(15.0),
                                         )),
                                         fixedSize: MaterialStateProperty.all(
-                                            Size(110, 20)),
+                                            const Size(110, 20)),
                                       ),
                                       onPressed: () {
                                         _showDisableConfirmationDialog(
                                             context); // Show disable confirmation dialog
                                       },
-                                      icon: Icon(Icons.block,
+                                      icon: const Icon(Icons.block,
                                           color: Colors.white),
-                                      label: Text(
+                                      label: const Text(
                                         'Disable',
                                         style: TextStyle(color: Colors.white, fontSize: 11),
                                       ),
                                     ),
-                                    SizedBox(width: 10),
+                                    const SizedBox(width: 10),
                                     ElevatedButton.icon(
                                       style: ButtonStyle(
                                         backgroundColor:
@@ -273,15 +273,15 @@ class _UsersPageState extends State<UsersPage> {
                                               BorderRadius.circular(15.0),
                                         )),
                                         fixedSize: MaterialStateProperty.all(
-                                            Size(110, 20)),
+                                            const Size(110, 20)),
                                       ),
                                       onPressed: () {
                                         _showDeleteConfirmationDialog(
                                             context); // Show delete confirmation dialog
                                       },
-                                      icon: Icon(Icons.delete,
+                                      icon: const Icon(Icons.delete,
                                           color: Colors.white),
-                                      label: Text(
+                                      label: const Text(
                                         'Delete',
                                         style: TextStyle(color: Colors.white, fontSize: 11),
                                       ),
@@ -296,7 +296,7 @@ class _UsersPageState extends State<UsersPage> {
                   return Text("${snapshot.error}");
                 }
 
-                return CircularProgressIndicator();
+                return const CircularProgressIndicator();
               },
             ),
           ],
