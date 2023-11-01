@@ -22,7 +22,7 @@ class CommentsComplaint extends StatelessWidget {
       ),
       drawer:  DrawerPage(),
       
-      body: ComplaintsTab(complaintType: 'Posts'),
+      body: ComplaintsTab(complaintType: 'Comments'),
     );
   }
 }

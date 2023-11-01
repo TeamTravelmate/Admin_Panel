@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class   UsersComplaint extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ComplaintsTab(complaintType: 'Posts');
+    return ComplaintsTab(complaintType: 'Users');
   }
 }
 

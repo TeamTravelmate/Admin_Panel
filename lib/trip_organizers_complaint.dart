@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class   Trip_organizers_Complaint extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ComplaintsTab(complaintType: 'Posts');
+    return ComplaintsTab(complaintType: 'System');
   }
 }
 
@@ -101,7 +101,7 @@ class ComplaintsTab extends StatelessWidget {
                             ),
                             SizedBox(height: 20),
                             Text(
-                              'Report: Inappropriate content > misleading',
+                              'Report: Low Performance than expected',
                               style: TextStyle(color: Colors.red),
                             ),
                           ],
